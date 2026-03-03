@@ -1,4 +1,4 @@
-import ImageCarousel from "@/app/components/ImageCarousel";
+import ImageCarousel from "@/app/Components/ImageCarousel";
 
 export default function Hero() {
   return (
