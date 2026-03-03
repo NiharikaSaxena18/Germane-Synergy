@@ -2,8 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: "/your-repo-name",
-  assetPrefix: "/your-repo-name/",
+  basePath: "/Germane-Synergy",
+  assetPrefix: "/Germane-Synergy/",
 };
 
 export default nextConfig;
