@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
-
+import Image from "next/image";
 export default function Navbar() {
   return (
     <nav className="bg-gray-200 shadow-md h-20 fixed w-full z-50">
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
-    <img 
+    <Image 
       src="/images/logo.png" 
       alt="Germane Synergy Logo" 
       className="h-full w-auto"

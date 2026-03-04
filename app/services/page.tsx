@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function Services() {
   return (
     <section className="pt-32 pb-20 bg-gray-100 min-h-screen">
@@ -30,7 +31,7 @@ export default function Services() {
           {/* Power */}
           <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
-              <img src="/images/power.jpg" alt="Power" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
+              <Image src="/images/power.jpg" alt="Power" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Power</h3>
@@ -43,7 +44,7 @@ export default function Services() {
           {/* Oil & Gas */}
           <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
-              <img src="/images/oilgas.jpg" alt="Oil & Gas" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
+              <Image src="/images/oilgas.jpg" alt="Oil & Gas" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Oil & Gas</h3>
@@ -56,7 +57,7 @@ export default function Services() {
           {/* Marine Services */}
           <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
-              <img src="/images/marine.jpg" alt="Marine Services" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
+              <Image src="/images/marine.jpg" alt="Marine Services" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Marine Services</h3>
@@ -69,7 +70,7 @@ export default function Services() {
           {/* Construction */}
           <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
-              <img src="/images/construction.jpg" alt="Construction" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
+              <Image src="/images/construction.jpg" alt="Construction" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Construction</h3>
@@ -82,7 +83,7 @@ export default function Services() {
           {/* Food & Beverages */}
           <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
-              <img src="/images/food.jpg" alt="Food & Beverages" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
+              <Image src="/images/food.jpg" alt="Food & Beverages" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Food & Beverages</h3>
@@ -95,7 +96,7 @@ export default function Services() {
           {/* Manpower */}
           <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
-              <img src="/images/manpower.jpg" alt="Manpower" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
+              <Image src="/images/manpower.jpg" alt="Manpower" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Manpower</h3>
@@ -108,7 +109,7 @@ export default function Services() {
           {/* Airlines */}
           <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
-              <img src="/images/airlines.jpg" alt="Airlines" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
+              <Image src="/images/airlines.jpg" alt="Airlines" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
             <div className="p-6">
               <h3 className="text-xl font-semibold text-gray-800 mb-2">Airlines</h3>
@@ -117,7 +118,6 @@ export default function Services() {
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
