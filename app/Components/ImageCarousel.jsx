@@ -24,15 +24,15 @@ export default function ImageCarousel() {
         className="rounded-xl"
       >
         <SwiperSlide>
-          <img src="/images/slide1.jpg" className="w-full h-[500px] object-cover rounded-xl" />
+          <img src="images/slide1.jpg" className="w-full h-[500px] object-cover rounded-xl" />
         </SwiperSlide>
 
         <SwiperSlide>
-          <img src="/images/slide2.jpg" className="w-full h-[500px] object-cover rounded-xl" />
+          <img src="images/slide2.jpg" className="w-full h-[500px] object-cover rounded-xl" />
         </SwiperSlide>
 
         <SwiperSlide>
-          <img src="/images/slide3.jpg" className="w-full h-[500px] object-cover rounded-xl" />
+          <img src="images/slide3.jpg" className="w-full h-[500px] object-cover rounded-xl" />
         </SwiperSlide>
       </Swiper>
     </div>
