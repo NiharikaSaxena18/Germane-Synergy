@@ -11,12 +11,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto">
         
         {/* Top Bar */}
-        <div className="h-20 flex justify-between items-center">
+        <div className="h-20 flex justify-between px-5 items-center">
           
           {/* Logo */}
           <div className="relative w-32 h-12">
             <Image
-              src="/images/logo.png"
+              src="images/logo.png"
               alt="Germane Synergy Logo"
               fill
               className="object-contain"
@@ -24,7 +24,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex space-x-7 text-black">
+          <div className="hidden md:flex px-3 space-x-7 text-black">
             <Link href="/" className="hover:text-blue-600">Home</Link>
             <Link href="/about" className="hover:text-blue-600">About</Link>
             <Link href="/services" className="hover:text-blue-600">Services</Link>
