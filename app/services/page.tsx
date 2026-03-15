@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 export default function Services() {
   return (
     <section className="pt-32 pb-20 bg-gray-100 min-h-screen">
@@ -16,7 +17,7 @@ export default function Services() {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
           {/* Telecom */}
-          <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
+          <Link href="/services/telecom" className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
               <img src="images/telecom.jpg" alt="Telecom" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
@@ -26,10 +27,10 @@ export default function Services() {
                 High precision telecom engineering and network infrastructure solutions.
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Power */}
-          <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
+          <Link href="/services/power" className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
               <Image src="images/power.jpg" alt="Power" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
@@ -39,10 +40,10 @@ export default function Services() {
                 Reliable power generation, renewable energy, and industrial energy systems.
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Oil & Gas */}
-          <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
+          <Link href="/services/oilgas" className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
               <Image src="images/oilgas.jpg" alt="Oil & Gas" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
@@ -52,10 +53,10 @@ export default function Services() {
                 Engineering, procurement, and industrial support for oil & gas operations.
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Marine Services */}
-          <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
+          <Link href="/services/marine" className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
               <Image src="images/marine.jpg" alt="Marine Services" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
@@ -65,10 +66,10 @@ export default function Services() {
                 Comprehensive marine, offshore, and port infrastructure solutions.
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Construction */}
-          <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
+          <Link href="/services/construction" className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
             <div className="h-44 w-full overflow-hidden">
               <Image src="images/construction.jpg" alt="Construction" className="w-full h-full object-cover transition duration-300 hover:scale-110" />
             </div>
@@ -78,7 +79,7 @@ export default function Services() {
                 Modern civil construction, road works, and large-scale infrastructure.
               </p>
             </div>
-          </div>
+          </Link>
 
           {/* Food & Beverages */}
           <div className="bg-white rounded-2xl shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
