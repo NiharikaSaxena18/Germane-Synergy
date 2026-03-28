@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import AdminLayout from '../../../Components/admin/AdminLayout';
 
 export default function SettingsPage() {
   const [adminUsers, setAdminUsers] = useState([
@@ -24,8 +23,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <AdminLayout>
-      <div className="p-6">
+    <div className="p-6">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Settings</h1>
         <div className="space-y-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -99,6 +97,5 @@ export default function SettingsPage() {
           </div>
         </div>
       </div>
-    </AdminLayout>
   );
 }

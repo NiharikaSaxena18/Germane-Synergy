@@ -16,7 +16,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="relative w-32 h-12">
             <Image
-              src="images/logo.png"
+              src="/images/logo.png"
               alt="Germane Synergy Logo"
               fill
               className="object-contain"

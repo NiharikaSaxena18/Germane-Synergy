@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import AdminLayout from '../../../Components/admin/AdminLayout';
 import Link from 'next/link';
 
 export default function OrdersPage() {
@@ -20,8 +19,7 @@ export default function OrdersPage() {
   );
 
   return (
-    <AdminLayout>
-      <div className="p-6">
+    <div className="p-6">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Orders</h1>
         <div className="mb-6 flex flex-col md:flex-row gap-4">
           <input
@@ -81,6 +79,5 @@ export default function OrdersPage() {
           </table>
         </div>
       </div>
-    </AdminLayout>
   );
 }

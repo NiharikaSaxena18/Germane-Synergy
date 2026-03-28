@@ -1,8 +1,16 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await fetch('/api/logout', { method: 'POST' });
+    router.push('/admin/login');
+  };
+
   return (
     <div className="flex min-h-screen bg-gray-100">
       <aside className="w-64 bg-gray-800 text-white">
@@ -18,6 +26,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin/services" className="block p-4 hover:bg-gray-700">Services</Link>
           <Link href="/admin/media" className="block p-4 hover:bg-gray-700">Media</Link>
           <Link href="/admin/settings" className="block p-4 hover:bg-gray-700">Settings</Link>
+          <button onClick={handleLogout} className="block w-full text-left p-4 hover:bg-gray-700">Logout</button>
         </nav>
       </aside>
       <main className="flex-1">

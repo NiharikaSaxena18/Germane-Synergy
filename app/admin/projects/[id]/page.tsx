@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { notFound } from 'next/navigation';
-import AdminLayout from '../../../../Components/admin/AdminLayout';
 import ProjectForm from '../../../../Components/admin/ProjectForm';
 
 interface Project {
@@ -43,12 +42,11 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
     console.log('Update project:', projectData);
   };
 
-  if (loading) return <AdminLayout><div className="p-6">Loading...</div></AdminLayout>;
+  if (loading) return <div className="p-6">Loading...</div>;
   if (!projectData) return notFound();
 
   return (
-    <AdminLayout>
-      <div className="p-6">
+    <div className="p-6">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Edit Project</h1>
         <ProjectForm
           projectData={projectData}

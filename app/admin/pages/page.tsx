@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import AdminLayout from '../../../Components/admin/AdminLayout';
 
 export default function PagesPage() {
   const [heroText, setHeroText] = useState('Welcome to Synergy');
@@ -14,8 +13,7 @@ export default function PagesPage() {
   };
 
   return (
-    <AdminLayout>
-      <div className="p-6">
+    <div className="p-6">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Content Management</h1>
         <div className="space-y-6">
           <div className="bg-white p-6 rounded-lg shadow-md">
@@ -53,6 +51,5 @@ export default function PagesPage() {
           </button>
         </div>
       </div>
-    </AdminLayout>
   );
 }

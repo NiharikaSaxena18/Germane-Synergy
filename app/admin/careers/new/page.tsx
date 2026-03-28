@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import AdminLayout from '../../../../Components/admin/AdminLayout';
 
 export default function NewJobPage() {
   const [jobData, setJobData] = useState({
@@ -20,8 +19,7 @@ export default function NewJobPage() {
   };
 
   return (
-    <AdminLayout>
-      <div className="p-6">
+    <div className="p-6">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Post New Job</h1>
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -97,6 +95,5 @@ export default function NewJobPage() {
           </div>
         </form>
       </div>
-    </AdminLayout>
   );
 }

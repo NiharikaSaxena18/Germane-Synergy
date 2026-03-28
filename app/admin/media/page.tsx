@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import AdminLayout from '../../../Components/admin/AdminLayout';
 
 export default function MediaPage() {
   const [uploadedImages, setUploadedImages] = useState([
@@ -22,8 +21,7 @@ export default function MediaPage() {
   };
 
   return (
-    <AdminLayout>
-      <div className="p-6">
+    <div className="p-6">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Media Manager</h1>
         <div className="mb-6">
           <input
@@ -52,6 +50,5 @@ export default function MediaPage() {
           ))}
         </div>
       </div>
-    </AdminLayout>
   );
 }
