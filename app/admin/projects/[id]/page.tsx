@@ -66,7 +66,7 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
   };
 
   if (loading) return <div className="p-6">Loading...</div>;
-  if (!projectData) return notFound();
+  if (projectNotFound) return <div className="p-6">Project not found</div>;
 
   return (
     <div className="p-6">
