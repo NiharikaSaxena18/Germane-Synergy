@@ -1,13 +1,25 @@
 'use client';
 
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function CareersPage() {
   // TODO: Fetch jobs from db
-  const jobs = [
+  const [jobs, setJobs] = useState([
     { id: '1', title: 'Software Engineer', location: 'Remote', status: 'open', postedDate: '2023-10-01' },
     { id: '2', title: 'Project Manager', location: 'On-site', status: 'closed', postedDate: '2023-09-15' },
-  ];
+  ]);
+
+  const handleEdit = (jobId: string) => {
+    // TODO: Open edit modal or redirect to edit page
+    console.log('Edit job:', jobId);
+  };
+
+  const handleDelete = (jobId: string) => {
+    // TODO: Delete from db
+    setJobs(jobs.filter(job => job.id !== jobId));
+    console.log('Delete job:', jobId);
+  };
 
   return (
     <div className="p-6">
@@ -42,8 +54,8 @@ export default function CareersPage() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">{job.postedDate}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <button className="text-blue-600 hover:text-blue-900 mr-4">Edit</button>
-                    <button className="text-red-600 hover:text-red-900">Delete</button>
+                    <button onClick={() => handleEdit(job.id)} className="text-blue-600 hover:text-blue-900 hover:underline mr-4">Edit</button>
+                    <button onClick={() => handleDelete(job.id)} className="text-red-600 hover:text-red-900 hover:underline">Delete</button>
                   </td>
                 </tr>
               ))}

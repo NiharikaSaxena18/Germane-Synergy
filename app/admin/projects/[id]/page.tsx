@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { notFound } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import ProjectForm from '../../../../Components/admin/ProjectForm';
 
 interface Project {
@@ -13,33 +13,56 @@ interface Project {
   status: string;
 }
 
-async function getProject(id: string): Promise<Project | null> {
-  // TODO: Fetch from db
-  const projects: Project[] = [
-    { id: '1', name: 'Project A', client: 'Client X', description: 'Description A', deadline: '2023-12-01', status: 'active' }
-  ];
-  return projects.find(project => project.id === id) || null;
-}
-
 export default function EditProjectPage({ params }: { params: { id: string } }) {
+  const router = useRouter();
   const [projectData, setProjectData] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [projectNotFound, setProjectNotFound] = useState(false);
 
   useEffect(() => {
-    getProject(params.id).then((project) => {
-      if (project) {
-        setProjectData(project);
-      } else {
-        notFound();
+    const fetchProject = async () => {
+      try {
+        const res = await fetch(`/api/projects/${params.id}`);
+        if (res.ok) {
+          setProjectData(await res.json());
+        } else {
+          setProjectNotFound(true);
+        }
+      } catch (error) {
+        console.error('Failed to load project', error);
+        setProjectNotFound(true);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
-    });
+    };
+
+    fetchProject();
   }, [params.id]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Update project in db
-    console.log('Update project:', projectData);
+    if (!projectData) return;
+
+    try {
+      setSaving(true);
+      const response = await fetch(`/api/projects/${projectData.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(projectData),
+      });
+      if (response.ok) {
+        alert('Project updated successfully!');
+        router.push('/admin/projects');
+      } else {
+        alert('Unable to update project');
+      }
+    } catch (error) {
+      console.error('Error updating project:', error);
+      alert('Unable to update project');
+    } finally {
+      setSaving(false);
+    }
   };
 
   if (loading) return <div className="p-6">Loading...</div>;
@@ -47,14 +70,13 @@ export default function EditProjectPage({ params }: { params: { id: string } }) 
 
   return (
     <div className="p-6">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">Edit Project</h1>
-        <ProjectForm
-          projectData={projectData}
-          setProjectData={setProjectData}
-          onSubmit={handleSubmit}
-          submitButtonText="Update Project"
-        />
-      </div>
-    </AdminLayout>
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">Edit Project</h1>
+      <ProjectForm
+        projectData={projectData}
+        setProjectData={setProjectData}
+        onSubmit={handleSubmit}
+        submitButtonText={saving ? 'Saving...' : 'Update Project'}
+      />
+    </div>
   );
 }

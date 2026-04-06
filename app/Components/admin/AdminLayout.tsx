@@ -23,7 +23,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin/projects" className="block p-4 hover:bg-gray-700">Projects</Link>
           <Link href="/admin/careers" className="block p-4 hover:bg-gray-700">Careers</Link>
           <Link href="/admin/pages" className="block p-4 hover:bg-gray-700">Pages</Link>
-          <Link href="/admin/services" className="block p-4 hover:bg-gray-700">Services</Link>
           <Link href="/admin/media" className="block p-4 hover:bg-gray-700">Media</Link>
           <Link href="/admin/settings" className="block p-4 hover:bg-gray-700">Settings</Link>
           <button onClick={handleLogout} className="block w-full text-left p-4 hover:bg-gray-700">Logout</button>

@@ -1,0 +1,58 @@
+[
+  {
+    "services": {
+      "title": "Our Services",
+      "description": "Delivering integrated engineering, infrastructure, and industrial solutions across diverse sectors with efficiency and innovation.",
+      "services": [
+        {
+          "id": "airlines",
+          "title": "Airlines",
+          "description": "Comprehensive solutions for the aviation industry.",
+          "image": "/images/airlines.jpg"
+        },
+        {
+          "id": "construction",
+          "title": "Construction",
+          "description": "Building infrastructure with precision and quality.",
+          "image": "/images/construction.jpg"
+        },
+        {
+          "id": "food",
+          "title": "Food",
+          "description": "Food processing and safety solutions.",
+          "image": "/images/food.jpg"
+        },
+        {
+          "id": "manpower",
+          "title": "Manpower",
+          "description": "Skilled workforce for various industries.",
+          "image": "/images/manpower.jpg"
+        },
+        {
+          "id": "marine",
+          "title": "Marine",
+          "description": "Maritime engineering and services.",
+          "image": "/images/marine.jpg"
+        },
+        {
+          "id": "oilgas",
+          "title": "Oil & Gas",
+          "description": "Energy sector solutions and maintenance.",
+          "image": "/images/oilgas.jpg"
+        },
+        {
+          "id": "power",
+          "title": "Power",
+          "description": "Electrical and power generation services.",
+          "image": "/images/power.jpg"
+        },
+        {
+          "id": "telecom",
+          "title": "Telecom",
+          "description": "Telecommunications infrastructure and support.",
+          "image": "/images/telecom.jpg"
+        }
+      ]
+    }
+  }
+]

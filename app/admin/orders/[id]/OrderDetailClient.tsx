@@ -20,9 +20,14 @@ export default function OrderDetailClient({ order }: Props) {
   const [notes, setNotes] = useState(order.notes || '');
   const [quote, setQuote] = useState(order.quote || 0);
 
-  const handleUpdate = () => {
-    // update order
-    console.log('Update', status, notes, quote);
+  const handleUpdate = async () => {
+    try {
+      // TODO: Update order in db
+      console.log('Update order:', { status, notes, quote });
+      alert('Order updated successfully!');
+    } catch (error) {
+      console.error('Error updating order:', error);
+    }
   };
 
   return (

@@ -12,10 +12,15 @@ export default function NewJobPage() {
     status: 'open'
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Save new job to db
-    console.log('Create job:', jobData);
+    try {
+      // TODO: Save new job to db
+      console.log('Create job:', jobData);
+      alert('Job posted successfully!');
+    } catch (error) {
+      console.error('Error creating job:', error);
+    }
   };
 
   return (

@@ -9,3 +9,13 @@ export function generateToken(payload: any) {
 export function verifyToken(token: string) {
   return jwt.verify(token, SECRET);
 }
+
+export function isAdmin(token: string | undefined): boolean {
+  if (!token) return false;
+  try {
+    const decoded = verifyToken(token);
+    return decoded.role === 'admin';
+  } catch (error) {
+    return false;
+  }
+}

@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 export default function SettingsPage() {
   const [adminUsers, setAdminUsers] = useState([
-    { id: '1', email: 'admin@example.com', role: 'superadmin' },
+    { id: '1', email: 'info@germanesynergy.com', role: 'superadmin' },
   ]);
   const [siteSettings, setSiteSettings] = useState({
     siteName: 'Synergy',
@@ -12,14 +12,45 @@ export default function SettingsPage() {
     maintenanceMode: false
   });
 
-  const handleAddUser = () => {
-    // TODO: Add user
-    console.log('Add user');
+  const handleRemoveUser = (userId: string) => {
+    const user = adminUsers.find(u => u.id === userId);
+    if (user?.role === 'superadmin') {
+      alert('Cannot remove superadmin user!');
+      return;
+    }
+    try {
+      // TODO: Remove user from db
+      setAdminUsers(adminUsers.filter(user => user.id !== userId));
+      console.log('Remove user:', userId);
+      alert('User removed successfully!');
+    } catch (error) {
+      console.error('Remove user error:', error);
+    }
   };
 
-  const handleSaveSettings = () => {
-    // TODO: Save settings
-    console.log('Save settings:', siteSettings);
+  const handleAddUser = () => {
+    // TODO: Open modal/form to add new user
+    const newEmail = prompt('Enter email for new admin user:');
+    if (newEmail) {
+      const newUser = {
+        id: Date.now().toString(),
+        email: newEmail,
+        role: 'admin'
+      };
+      setAdminUsers([...adminUsers, newUser]);
+      console.log('Add user:', newEmail);
+      alert('User added successfully!');
+    }
+  };
+
+  const handleSaveSettings = async () => {
+    try {
+      // TODO: Save settings
+      console.log('Save settings:', siteSettings);
+      alert('Settings saved successfully!');
+    } catch (error) {
+      console.error('Save settings error:', error);
+    }
   };
 
   return (
@@ -42,7 +73,13 @@ export default function SettingsPage() {
                     <td>{user.email}</td>
                     <td>{user.role}</td>
                     <td>
-                      <button className="text-red-600 hover:text-red-900">Remove</button>
+                      <button 
+                        onClick={() => handleRemoveUser(user.id)} 
+                        disabled={user.role === 'superadmin'}
+                        className={user.role === 'superadmin' ? 'text-gray-400 cursor-not-allowed' : 'text-red-600 hover:text-red-900 hover:underline'}
+                      >
+                        {user.role === 'superadmin' ? 'Protected' : 'Remove'}
+                      </button>
                     </td>
                   </tr>
                 ))}

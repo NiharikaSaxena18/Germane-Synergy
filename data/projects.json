@@ -1,0 +1,4 @@
+[
+  { "id": "1", "name": "Project Alpha", "status": "active" },
+  { "id": "2", "name": "Project Beta", "status": "completed" }
+]

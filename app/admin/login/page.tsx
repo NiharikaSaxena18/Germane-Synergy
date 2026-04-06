@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
@@ -8,6 +8,22 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
+
+  useEffect(() => {
+    checkIfLoggedIn();
+  }, []);
+
+  const checkIfLoggedIn = async () => {
+    try {
+      const res = await fetch('/api/auth/check');
+      const data = await res.json();
+      if (data.isAdmin) {
+        router.push('/admin/dashboard');
+      }
+    } catch (error) {
+      // Not logged in, stay on login page
+    }
+  };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -1,15 +1,56 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const router = useRouter();
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (pathname?.startsWith('/admin/login')) {
+      setLoading(false);
+      return;
+    }
+
+    checkAuth();
+  }, [pathname]);
+
+  const checkAuth = async () => {
+    try {
+      const res = await fetch('/api/auth/check');
+      const data = await res.json();
+      if (data.isAdmin) {
+        setIsAuthorized(true);
+      } else {
+        router.push('/admin/login');
+      }
+    } catch (error) {
+      router.push('/admin/login');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (pathname?.startsWith('/admin/login')) {
+    return <>{children}</>;
+  }
 
   const handleLogout = async () => {
     await fetch('/api/logout', { method: 'POST' });
     router.push('/admin/login');
   };
+
+  if (loading) {
+    return <div className="flex min-h-screen items-center justify-center">Loading...</div>;
+  }
+
+  if (!isAuthorized) {
+    return null;
+  }
 
   return (
     <div className="flex min-h-screen bg-gray-100">
@@ -23,7 +64,6 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin/projects" className="block p-4 hover:bg-gray-700">Projects</Link>
           <Link href="/admin/careers" className="block p-4 hover:bg-gray-700">Careers</Link>
           <Link href="/admin/pages" className="block p-4 hover:bg-gray-700">Pages</Link>
-          <Link href="/admin/services" className="block p-4 hover:bg-gray-700">Services</Link>
           <Link href="/admin/media" className="block p-4 hover:bg-gray-700">Media</Link>
           <Link href="/admin/settings" className="block p-4 hover:bg-gray-700">Settings</Link>
           <button onClick={handleLogout} className="block w-full text-left p-4 hover:bg-gray-700">Logout</button>
