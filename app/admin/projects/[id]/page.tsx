@@ -13,7 +13,7 @@ interface Project {
   status: string;
 }
 
-export default function EditProjectPage({ params }: { params: { id: string } }) {
+export default function EditProjectPage(context: { params: Promise<{ id: string }> }) {
   const router = useRouter();
   const [projectData, setProjectData] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
