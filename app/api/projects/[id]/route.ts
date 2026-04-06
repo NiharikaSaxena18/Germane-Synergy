@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { readData, writeData } from '../../../../lib/db';
 
-export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params; // deploy error remove
+
   try {
     const projects = readData<any>('projects');
-    const project = projects.find((item) => item.id === params.id);
+    const project = projects.find((item) => item.id === id);
     if (!project) {
       return NextResponse.json({ error: 'Project not found' }, { status: 404 });
     }
@@ -14,11 +19,16 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params; // deploy error remove
+
   try {
     const body = await request.json();
     const projects = readData<any>('projects');
-    const index = projects.findIndex((item) => item.id === params.id);
+    const index = projects.findIndex((item) => item.id === id);
     if (index === -1) {
       return NextResponse.json({ error: 'Project not found' }, { status: 404 });
     }
@@ -31,10 +41,15 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params; // deploy error remove
+
   try {
     const projects = readData<any>('projects');
-    const updatedProjects = projects.filter((item) => item.id !== params.id);
+    const updatedProjects = projects.filter((item) => item.id !== id);
     writeData('projects', updatedProjects);
     return NextResponse.json({ success: true });
   } catch (error) {
