@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import ProjectForm from '../../../../Components/admin/ProjectForm';
+import ProjectForm, { ProjectData } from '../../../../Components/admin/ProjectForm';
 
 interface Project {
   id: string;
@@ -13,7 +13,8 @@ interface Project {
   status: string;
 }
 
-export default function EditProjectPage(context: { params: Promise<{ id: string }> }) {
+export default function EditProjectPage({ params: paramsPromise }: { params: Promise<{ id: string }> }) {
+  const { id } = use(paramsPromise);
   const router = useRouter();
   const [projectData, setProjectData] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
@@ -23,7 +24,7 @@ export default function EditProjectPage(context: { params: Promise<{ id: string 
   useEffect(() => {
     const fetchProject = async () => {
       try {
-        const res = await fetch(`/api/projects/${params.id}`);
+        const res = await fetch(`/api/projects/${id}`);
         if (res.ok) {
           setProjectData(await res.json());
         } else {
@@ -38,7 +39,7 @@ export default function EditProjectPage(context: { params: Promise<{ id: string 
     };
 
     fetchProject();
-  }, [params.id]);
+  }, [id]); // ✅ was params.id — params doesn't exist here, id does
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,13 +68,16 @@ export default function EditProjectPage(context: { params: Promise<{ id: string 
 
   if (loading) return <div className="p-6">Loading...</div>;
   if (projectNotFound) return <div className="p-6">Project not found</div>;
+  if (!projectData) return null; // ✅ narrows type from Project|null to Project
+
+  const { id: projectId, ...formData } = projectData; // ✅ strip id before passing to form
 
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">Edit Project</h1>
       <ProjectForm
-        projectData={projectData}
-        setProjectData={setProjectData}
+        projectData={formData}
+        setProjectData={(updated: ProjectData) => setProjectData({ ...updated, id: projectId })}
         onSubmit={handleSubmit}
         submitButtonText={saving ? 'Saving...' : 'Update Project'}
       />

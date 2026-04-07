@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-interface ProjectData {
+export interface ProjectData {
   name: string;
   client: string;
   description: string;
