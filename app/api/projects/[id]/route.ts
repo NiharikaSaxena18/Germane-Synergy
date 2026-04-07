@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { readData, writeData } from '../../../../lib/db';
 
+type Params = Promise<{ id: string }>;
+
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Params }
 ) {
-  const { id } = params;
+  const { id } = await context.params;
 
   try {
     const projects = readData<any>('projects');
@@ -22,9 +24,9 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Params }
 ) {
-  const { id } = params;
+  const { id } = await context.params;
 
   try {
     const body = await request.json();
@@ -47,9 +49,9 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Params }
 ) {
-  const { id } = params;
+  const { id } = await context.params;
 
   try {
     const projects = readData<any>('projects');
