@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import ProjectForm from '../../../../Components/admin/ProjectForm';
+import ProjectForm, { ProjectData } from '../../../../Components/admin/ProjectForm';
 
 interface Project {
   id: string;
@@ -35,7 +35,6 @@ export default function NewProjectPage() {
       if (response.ok) {
         router.push('/admin/projects');
       } else {
-        console.error('Failed to create project');
         alert('Unable to create project');
       }
     } catch (error) {
@@ -44,12 +43,15 @@ export default function NewProjectPage() {
     }
   };
 
+  // Strip id before passing to form
+  const { id, ...formData } = projectData;
+
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">Create New Project</h1>
       <ProjectForm
-        projectData={projectData}
-        setProjectData={setProjectData}
+        projectData={formData}
+        setProjectData={(updated: ProjectData) => setProjectData({ ...updated, id })}
         onSubmit={handleSubmit}
         submitButtonText="Create Project"
       />

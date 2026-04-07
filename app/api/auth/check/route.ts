@@ -4,12 +4,15 @@ import { verifyToken } from '@/lib/auth';
 export async function GET(request: NextRequest) {
   try {
     const token = request.cookies.get('token')?.value;
-
     if (!token) {
       return NextResponse.json({ isAdmin: false });
     }
 
     const decoded = verifyToken(token);
+
+    if (typeof decoded === 'string' || !decoded) {
+      return NextResponse.json({ isAdmin: false });
+    }
 
     if (decoded.role === 'admin') {
       return NextResponse.json({ isAdmin: true, user: decoded });
