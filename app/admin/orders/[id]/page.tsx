@@ -2,11 +2,13 @@ import { notFound } from 'next/navigation';
 import OrderDetailClient from './OrderDetailClient';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-export default function OrderDetailPage({ params }: PageProps) {
-  const order = { id: params.id, customer: 'John Doe', status: 'pending', total: 100, items: [] }; // mock
+export default async function OrderDetailPage({ params }: PageProps) {
+  const { id } = await params;
+
+  const order = { id, customer: 'John Doe', status: 'pending', total: 100, items: [] }; // mock
 
   if (!order) {
     notFound();
@@ -18,7 +20,7 @@ export default function OrderDetailPage({ params }: PageProps) {
       <p>Customer: {order.customer}</p>
       <p>Status: {order.status}</p>
       <p>Total: ${order.total}</p>
-      {/* Client component for updates */}
+
       <OrderDetailClient order={order} />
     </div>
   );

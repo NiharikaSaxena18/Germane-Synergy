@@ -3,56 +3,62 @@ import { readData, writeData } from '../../../../lib/db';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await params; // deploy error remove
+  const { id } = params;
 
   try {
     const projects = readData<any>('projects');
     const project = projects.find((item) => item.id === id);
-    if (!project) {
+
+    if (!project)
       return NextResponse.json({ error: 'Project not found' }, { status: 404 });
-    }
+
     return NextResponse.json(project);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to read project' }, { status: 500 });
   }
 }
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await params; // deploy error remove
+  const { id } = params;
 
   try {
     const body = await request.json();
     const projects = readData<any>('projects');
     const index = projects.findIndex((item) => item.id === id);
-    if (index === -1) {
+
+    if (index === -1)
       return NextResponse.json({ error: 'Project not found' }, { status: 404 });
-    }
+
     const updatedProject = { ...projects[index], ...body };
     projects[index] = updatedProject;
+
     writeData('projects', projects);
+
     return NextResponse.json(updatedProject);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to update project' }, { status: 500 });
   }
 }
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = await params; // deploy error remove
+  const { id } = params;
 
   try {
     const projects = readData<any>('projects');
     const updatedProjects = projects.filter((item) => item.id !== id);
+
     writeData('projects', updatedProjects);
+
     return NextResponse.json({ success: true });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to delete project' }, { status: 500 });
   }
 }
