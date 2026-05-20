@@ -27,22 +27,22 @@ const products: Product[] = [
     id: '2',
     name: 'Solar Solution 24x7 No Gen',
     description: 'No hassel of NEPA',
-    price: 100.0,
+    price: 100.00,
     image: '/images/nonepasolar2.jpg',
   },
   {
     id: '3',
     name: 'MTU Brand New Gas Generator',
     description: 'Available in Lagos',
-    price: 800,
+    price: 800.00,
     image: '/images/mtunewgasgen3.jpg',
   },
   {
     id: '4',
     name: 'Brand New MWM Containerized Gas Generator',
     description: 'Available in Lagos',
-    price: 500,
-    image: '/images/mwmcontainerizedgasgen4.jpg',
+    price: 500.00,
+    image: '/images/containerizedgasgen4.jpg',
   },
 ];
 
@@ -113,9 +113,9 @@ export default function OrdersPage() {
     <main className="min-h-screen pt-28 px-6 pb-12 bg-slate-50">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 text-center">
-          <h1 className="text-4xl font-bold text-gray-900">Orders</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mt-4">Orders</h1>
           <p className="mt-2 text-gray-600 max-w-2xl mx-auto">
-            Browse our sample service packages and add them to your cart. Use the Order Now button to submit the order and view it from the admin panel.
+            Browse items from our catalogue and add them to your cart. Use the Order Now button to submit the order.
           </p>
         </div>
 
@@ -193,7 +193,7 @@ export default function OrdersPage() {
             <div className="space-y-3 rounded-3xl border border-gray-200 bg-slate-50 p-5">
               <div className="flex items-center justify-between text-gray-700">
                 <span className="font-medium">Subtotal</span>
-                <span className="font-semibold text-gray-900">${total}</span>
+                <span className="font-semibold text-gray-900">NGN {total}</span>
               </div>
               <button
                 type="button"
