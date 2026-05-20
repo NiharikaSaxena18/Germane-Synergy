@@ -48,6 +48,7 @@ export default function Navbar() {
             <Link href="/about" className="hover:text-blue-600">About</Link>
             <Link href="/services" className="hover:text-blue-600">Services</Link>
             <Link href="/projects" className="hover:text-blue-600">Projects</Link>
+            <Link href="/orders" className="hover:text-blue-600">Orders</Link>
             <Link href="/envsafety" className="hover:text-blue-600">Environment & Safety</Link>
             <Link href="/careers" className="hover:text-blue-600">Careers</Link>
             <Link href="/contact" className="hover:text-blue-600">Contact</Link>
@@ -92,6 +93,7 @@ export default function Navbar() {
             <Link href="/about" className="block hover:text-blue-600">About</Link>
             <Link href="/services" className="block hover:text-blue-600">Services</Link>
             <Link href="/projects" className="block hover:text-blue-600">Projects</Link>
+            <Link href="/orders" className="block hover:text-blue-600">Orders</Link>
             <Link href="/envsafety" className="block hover:text-blue-600">Environment & Safety</Link>
             <Link href="/careers" className="block hover:text-blue-600">Careers</Link>
             <Link href="/contact" className="block hover:text-blue-600">Contact</Link>

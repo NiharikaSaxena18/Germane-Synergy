@@ -10,6 +10,27 @@ export async function GET() {
   }
 }
 
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+    const orders = readData<any>('orders');
+    const nextId = String(
+      orders.length > 0 ? Math.max(...orders.map((order: any) => Number(order.id || '0'))) + 1 : 1
+    );
+    const newOrder = {
+      ...body,
+      id: nextId,
+      status: body.status || 'pending',
+      date: body.date || new Date().toISOString().slice(0, 10),
+    };
+    orders.push(newOrder);
+    writeData('orders', orders);
+    return NextResponse.json(newOrder, { status: 201 });
+  } catch (error) {
+    return NextResponse.json({ error: 'Failed to create order' }, { status: 500 });
+  }
+}
+
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json();

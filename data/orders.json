@@ -1,4 +1,33 @@
 [
-  { "id": "1", "customer": "John Doe", "status": "pending", "date": "2024-04-01", "total": 1500 },
-  { "id": "2", "customer": "Jane Smith", "status": "completed", "date": "2024-03-28", "total": 2200 }
+  {
+    "id": "1",
+    "customer": "John Doe",
+    "status": "pending",
+    "date": "2024-04-01",
+    "total": 1500
+  },
+  {
+    "id": "2",
+    "customer": "Jane Smith",
+    "status": "completed",
+    "date": "2024-03-28",
+    "total": 2200
+  },
+  {
+    "customer": "Bob",
+    "total": 1200,
+    "items": [
+      {
+        "id": "1",
+        "name": "Airline Safety Package",
+        "description": "Complete safety inspection and support for aviation operations.",
+        "price": 1200,
+        "image": "/images/airlines.jpg",
+        "quantity": 1
+      }
+    ],
+    "status": "pending",
+    "date": "2026-05-20",
+    "id": "3"
+  }
 ]

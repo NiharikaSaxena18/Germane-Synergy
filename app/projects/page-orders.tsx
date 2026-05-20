@@ -5,7 +5,7 @@ export default function Projects() {
 
         {/* Header */}
         <div className="mb-16 mt-5">
-          <h1 className="text-2xl font-bold text-gray-800 mb-6">
+          <h1 className="text-3xl font-bold text-gray-800 mb-6">
             Our Projects
           </h1>
           <i className="text-xl text-gray-700 max-w-3xl leading-relaxed">

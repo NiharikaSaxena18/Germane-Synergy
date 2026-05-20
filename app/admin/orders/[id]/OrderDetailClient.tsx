@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 interface Order {
   id: string;
+  customer: string;
+  date: string;
   status: string;
   total: number;
   items: any[];
@@ -20,12 +22,23 @@ export default function OrderDetailClient({ order }: Props) {
   const [notes, setNotes] = useState(order.notes || '');
   const [quote, setQuote] = useState(order.quote || 0);
 
+  const [message, setMessage] = useState('');
+
   const handleUpdate = async () => {
     try {
-      // TODO: Update order in db
-      console.log('Update order:', { status, notes, quote });
-      alert('Order updated successfully!');
+      const response = await fetch('/api/orders', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: order.id, status, notes, quote, total: order.total, customer: order.customer, date: order.date, items: order.items }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update order');
+      }
+
+      setMessage('Order updated successfully.');
     } catch (error) {
+      setMessage('Unable to update order.');
       console.error('Error updating order:', error);
     }
   };
@@ -49,6 +62,7 @@ export default function OrderDetailClient({ order }: Props) {
         <input type="number" value={quote} onChange={(e) => setQuote(Number(e.target.value))} className="p-2 border rounded" />
       </div>
       <button onClick={handleUpdate} className="bg-blue-500 text-white px-4 py-2 rounded">Update</button>
+      {message && <p className="mt-3 text-sm text-gray-700">{message}</p>}
     </div>
   );
 }
